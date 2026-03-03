@@ -1,0 +1,21 @@
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Credentials (sensitive)
+credentials.json
+token.json
+
+# Generated files
+files_to_classify.json
+classification.json
+move_history.json
+
+# OS files
+.DS_Store

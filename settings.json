@@ -1,0 +1,103 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/initialize-session.ts"
+          },
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/load-core-context.ts"
+          },
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/capture-all-events.ts --event-type SessionStart"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/capture-all-events.ts --event-type PreToolUse"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/capture-all-events.ts --event-type PostToolUse"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/update-tab-titles.ts"
+          },
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/capture-all-events.ts --event-type UserPromptSubmit"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/stop-hook.ts"
+          },
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/capture-all-events.ts --event-type Stop"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/subagent-stop-hook.ts"
+          },
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/capture-all-events.ts --event-type SubagentStop"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/capture-session-summary.ts"
+          },
+          {
+            "type": "command",
+            "command": "~/.bun/bin/bun run ~/.claude/hooks/capture-all-events.ts --event-type SessionEnd"
+          }
+        ]
+      }
+    ]
+  },
+  "alwaysThinkingEnabled": true
+}
